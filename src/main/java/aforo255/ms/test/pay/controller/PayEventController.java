@@ -25,8 +25,8 @@ public class PayEventController {
 	@Autowired
 	private OperationService operationService;
 
-	@PostMapping("/v1/payevent")
-	public ResponseEntity<Operation> postDeposit(@RequestBody Operation operationEvent) throws JsonProcessingException{
+	@PostMapping("/pay")
+	public ResponseEntity<Operation> postPay(@RequestBody Operation operationEvent) throws JsonProcessingException{
 		log.info("antes de guardar operacion sql");
 		Operation operation = operationService.save(operationEvent);
 		log.info("despues de guardar operacion sql");
