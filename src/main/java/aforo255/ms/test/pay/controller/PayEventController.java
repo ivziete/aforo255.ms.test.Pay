@@ -27,12 +27,9 @@ public class PayEventController {
 
 	@PostMapping("/pay")
 	public ResponseEntity<Operation> postPay(@RequestBody Operation operationEvent) throws JsonProcessingException{
-		log.info("antes de guardar operacion sql");
 		Operation operation = operationService.save(operationEvent);
-		log.info("despues de guardar operacion sql");
-		log.info("antes  de sendPayEvent");
 		payProducer.sendPayEvent(operation);
-		log.info("despues  de sendPayEvent");
+		log.info("================================== Enviando un evento de pago para la factura: "+ operation.getInvoiceId());
 		return  ResponseEntity.status(HttpStatus.CREATED).body(operation);			
 	}
 	
