@@ -8,7 +8,7 @@ import org.springframework.kafka.config.TopicBuilder;
 public class AutoCreateConfig {
 
 	public NewTopic depositEvent() {
-		return TopicBuilder.name("transaction-events")
+		return TopicBuilder.name("operation-events")
 				.partitions(3).replicas(1).build();
 	}
 	

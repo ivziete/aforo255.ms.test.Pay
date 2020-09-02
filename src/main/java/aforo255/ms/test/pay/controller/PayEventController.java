@@ -29,7 +29,7 @@ public class PayEventController {
 	public ResponseEntity<Operation> postPay(@RequestBody Operation operationEvent) throws JsonProcessingException{
 		Operation operation = operationService.save(operationEvent);
 		payProducer.sendPayEvent(operation);
-		log.info("================================== Enviando un evento de pago para la factura: "+ operation.getInvoiceId());
+		log.info("\n===> Pay: Enviando un evento de pago para la factura: "+ operation.getInvoiceId() +" de Monto: "+operation.getAmount());
 		return  ResponseEntity.status(HttpStatus.CREATED).body(operation);			
 	}
 	
